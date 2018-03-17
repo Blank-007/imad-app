@@ -54,7 +54,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/counter',function(req,res){
-   var counter=counter+1;
+   var counter=0;
+   counter=counter+1;
    res.send(counter.toString());
 });
 
