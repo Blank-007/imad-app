@@ -10,6 +10,26 @@ var articles = {
     
 }
 
+function CreateTemplate(data){
+    var title = data.title;
+    var heading = data.heading;
+    var htmltemplate = ` 
+    <html>
+        <head>
+            <title>
+                Article One | Blank
+            </title>
+            <meta name="viewport" content="width=device-width , initial-scacle=1" />
+        </head>
+        <body>
+            <div class="container">
+                <a href="/">Home</a>
+                <h4>This is the first article</h4>
+            </div>    
+        </body>    
+    </html>`;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
