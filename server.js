@@ -58,6 +58,11 @@ app.get('/:articleName', function (req,res) {
     res.send(CreateTemplate(articles[articleName]));
 });
 
+app.get('/counter',function(req,res){
+   var counter=counter+1;
+   res.send(Counter.toString());
+});
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
