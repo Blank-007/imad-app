@@ -60,7 +60,7 @@ app.get('/:articleName', function (req,res) {
 
 app.get('/counter',function(req,res){
    var counter=counter+1;
-   res.send(Counter.toString());
+   res.send(counter.toString());
 });
 
 app.get('/ui/style.css', function (req, res) {
