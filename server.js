@@ -11,7 +11,7 @@ var config = {
     password : process.env.DB_PASSWORD
 };
 
-var pool = new Pool(config);
+
 
 var app = express();
 app.use(morgan('combined'));
@@ -33,7 +33,7 @@ var articles = {
         heading : 'Third'
     }
 };
-
+var pool = new Pool(config);
 function CreateTemplate(data){
     var title = data.title;
     var heading = data.heading;
