@@ -70,24 +70,23 @@ app.get('/submit-name', function (req,res){
     names.push(name);
     res.send(JSON.stringify(names));
 });
-app.get('/articles/article-one', function (req,res) {
-    
-    pool.query("SELECT * FROM article WHERE title ='article-one'",function (err,result){
-       if(err){
-           res.status(500).send(err.toString());
-       } 
-       else{
-           if(result.rows.length === 0 ){
-               res.status(404).send('Article Not Found');
-           }else{
-               var articleData = result.rows[0];
-                   res.send(createTemplate(articleData));
-           }
-       }
+
+
+app.get('/articles/:articleName',function (req,res) {
+    pool.query('SELECT * FROM article WHERE title=$1',[req.params.articleName],function (err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else {
+            if(result.rows.length === 0){
+                res.status(404).send('Article not Found');
+            }
+            else{
+                var articleData = result.rows[0];
+                res.send(CreateTemplate(articleData));
+            }
+        }
     });
-
 });
-
 
 
 app.get('/ui/style.css', function (req, res) {
