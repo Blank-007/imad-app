@@ -76,9 +76,11 @@ app.get('/ui/main.js',function (req,res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
-
-app.get('/ui/favicon.ico', function (req,res){
-    res.send('https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg/220px-Robert_Downey_Jr_2014_Comic_Con_%28cropped%29.jpg');
+var names=[];
+app.get('/submit-name/:name', function (req,res){
+    var name = req.params.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
 });
 
 
