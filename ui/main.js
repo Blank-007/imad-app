@@ -35,7 +35,8 @@ button.onclick = function(){
 var submit = document.getElementById('click');
 submit.onclick = function () {
     var request = new XMLHttpRequest();
-    
+        var nameInput = document.getElementById('name');
+    var name = nameInput.value;
     request.onreadystatechange = function () {
         if(request.readyState === XMLHttpRequest.DONE){
             if(request.status === 200){
@@ -52,8 +53,7 @@ submit.onclick = function () {
             }            
         }
     };
-    var nameInput = document.getElementById('name');
-var name = nameInput.value;
+
     request.open('GET','http://mvabhinav1998.imad.hasura-app.io/submit-name?name='+name,true);
     request.send(null);
     
