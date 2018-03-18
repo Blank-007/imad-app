@@ -16,23 +16,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-var articles = {
-    'article-one': {
-        title : 'Ariticle One',
-        date : 'Dec 14,2018',
-        heading : 'First'
-    },
-    'article-two': {
-        title : 'Ariticle two',
-        date : 'Dec 17,2018',
-        heading : 'Second'
-    },
-    'article-three': {
-        title : 'Ariticle three',
-        date : 'Dec 20,2018',
-        heading : 'Third'
-    }
-};
+
 var pool = new Pool(config);
 function CreateTemplate(data){
     var title = data.title;
