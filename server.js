@@ -76,7 +76,7 @@ app.post('/login',function(req,res){
 app.get('/check-login',function(res,req){
    if(req.session && req.session.auth && req.session.auth.userId){
        res.send('you are logged in: ' + req.session.auth.userId.toString());
-   } else{
+   } else {
        res.send('you are not logged in');
    }
 });
