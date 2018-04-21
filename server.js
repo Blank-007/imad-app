@@ -21,7 +21,8 @@ app.use(bodyParser.json());
 
 function hash(input,salt){
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
-    return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
+   return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
+
 }
 app.get('/hash/:input',function(req,res){
     var hashedstring = hash(req.params.input,'this is some random text');
