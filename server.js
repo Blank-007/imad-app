@@ -18,7 +18,7 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-
+var pool = new Pool(config);
 function hash(input,salt){
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
    return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
@@ -66,7 +66,7 @@ app.get('/login/:username/:password',function(req,res){
        }
     });
 });
-var pool = new Pool(config);
+
 function CreateTemplate(data){
     var title = data.title;
     var heading = data.heading;
