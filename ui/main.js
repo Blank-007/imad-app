@@ -16,7 +16,9 @@ submit.onclick = function () {
     };
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
-    request.open('POST','http://mvabhinav1998.imad.hasura-app.io/submit-name?name='+name,true);
+    console.log(username);
+    console.log(password);
+    request.open('POST','http://mvabhinav1998.imad.hasura-app.io/login',true);
     request.send(JSON.stringify({username: username,password: password}));
     
 
