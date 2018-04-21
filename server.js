@@ -44,7 +44,30 @@ app.post('/create-user',function(req,res){
     });
 });
 
+
 app.post('/login',function(req,res){
+    var username = req.body.username;
+    var password = req.body.password;
+    pool.query('SELECT * FROM "user" WHERE username=$1',[username],function(err, result){
+       if(err){
+           res.status(500).send(err.toString());
+       } else{
+           if(result.rows.length === 0){
+               res.send(403).send('INVALID');
+           }else {
+               var dbstring = result.rows[0].password;
+               var salt = dbstring.split('$')[2];
+               var hashedPassword = hash(password, salt);
+               if(hashedPassword === dbstring){
+                   res.send('Credentials correct');
+               }else{
+                   res.send(403).send('invalid username/password');
+               }
+           }
+       }
+    });
+});
+/*app.post('/login',function(req,res){
     var username = req.body.username;
     var password = req.body.password;
     
@@ -66,7 +89,7 @@ app.post('/login',function(req,res){
            }
        }
     });
-});
+});*/
 
 function CreateTemplate(data){
     var title = data.title;
