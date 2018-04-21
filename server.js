@@ -25,7 +25,7 @@ function hash(input,salt){
 }
 app.get('/hash/:input',function(req,res){
     var hashedstring = hash(req.params.input,'this is some random text');
-    res.send(hashedsting);
+    res.send(hashedstring);
 }); 
 
 app.post('/create-user',function(req,res){
