@@ -25,6 +25,8 @@ function hash(input,salt){
    return ["pbkdf2","10000",salt,hashed.toString('hex')].join('$');
 
 }
+app.use(express.static('ui'));
+
 app.get('/hash/:input',function(req,res){
     var hashedstring = hash(req.params.input,'this is some random text');
     res.send(hashedstring);
